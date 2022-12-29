@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This project is to create a touchscreen interface for controlling smart home integrations with HomeAssistant
+This project is to create a touchscreen interface for controlling smart home integrations with HomeAssistant.
+The Pi will run as an MQTT client for feeding back state information to HomeAssistant
 
 ## Hardware
 
@@ -67,6 +68,19 @@ source ~/.bash_profile
 # Enable DRM VC4 V3D driver
 #dtoverlay=vc4-kms-v3d
 ```
+
+7. Install Python Package manager
+
+```bash
+sudo apt install python3-pip
+```
+
+8. Install MQTT client
+
+```bash
+pip install paho-mqtt
+```
+
 
 ## References
 
