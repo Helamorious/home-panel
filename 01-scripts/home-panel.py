@@ -14,7 +14,7 @@ last_reset = last_update
 mqtt_server = "mqtt.hilton.local"
 
 def wake_screen():
-    subprocess.run(["xset", "-d", ":0", "dpms", "force", "off"])
+    subprocess.run(["xset", "-d", ":0", "s" "reset"])
 
 def pir_change(sensor):
     if pir.motion_detected: wake_screen()
