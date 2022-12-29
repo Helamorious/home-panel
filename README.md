@@ -41,7 +41,7 @@ sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/
 while true; do chromium-browser --noerrdialogs --disable-infobars --kiosk $KIOSK_URL; sleep 1; done
 ```
 
-Add the following to */etc/xdg/openbox/environment*
+Configure the Kiosk URL as an environment variable */etc/xdg/openbox/environment*
 
 ```bash
 export KIOSK_URL=http://homeassistant.local:8123/lovelace-homehub/menu
