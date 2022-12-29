@@ -25,7 +25,7 @@ sudo apt upgrade
 3. Install Chromium and dependancies
 
 ```bash
-sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox
+sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox libXext-devel python-devel
 sudo apt-get install --no-install-recommends chromium-browser
 ```
 
@@ -75,9 +75,13 @@ source ~/.bash_profile
 sudo apt install python3-pip
 ```
 
-8. Install MQTT client
+8. Install Python virtual environment and MQTT client
 
 ```bash
+python3 -m pip install --user virtualenv
+cd /opt/home-panel
+python3 -m venv env
+source env/bin/activate
 pip install paho-mqtt
 ```
 
