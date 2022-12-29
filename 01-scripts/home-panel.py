@@ -4,7 +4,9 @@ from time import time
 from time import sleep
 import socket
 import paho.mqtt.client as mqtt
+import dpms
 import subprocess
+import threading
 from gpiozero import MotionSensor
 
 hostname = socket.gethostname()
@@ -13,13 +15,16 @@ pir = MotionSensor(14)
 last_update = time()
 last_reset = last_update
 
+display = dpms.DPMS(":0")
+display.SetTimeouts(30, 600, 3600)
+
 mqtt_server = "mqtt.hilton.local"
 
-def wake_screen():
-    subprocess.run(["xset", "-d", ":0", "s", "reset"])
+def display_on():
+    display.ForceLevel(dpms.DPMSModeOn)
 
 def pir_change(sensor):
-    if pir.motion_detected: wake_screen()
+    if pir.motion_detected: display_on()
     client.publish(hostname+"/"+str(sensor.pin), str({"motion_detected":pir.motion_detected}))
     global last_reset
     last_reset = time()
