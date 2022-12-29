@@ -13,7 +13,7 @@ last_reset = last_update
 mqtt_server = "mqtt.hilton.local"
 
 def pir_change(sensor):
-    client.publish(hostname+"/"+sensor+"/motion_detected", pir.motion_detected)
+    client.publish(hostname+"/"+str(sensor)+"/motion_detected", pir.motion_detected)
     global last_reset
     last_reset = time()
 
