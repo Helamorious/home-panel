@@ -6,6 +6,7 @@ from gpiozero import MotionSensor
 import paho.mqtt.client as mqtt
 
 pir = MotionSensor(14)
+ha_sensor = "homeassistant/sensor/pir"
 
 last_update = time()
 last_reset = last_update
@@ -13,6 +14,7 @@ last_reset = last_update
 mqtt_server = "mqtt.hilton.local"
 
 def pir_motion_detected(channel):
+    client.publish(sensor, pir.motion_detected)
     print(pir.motion_detected)
     print("Motion detected")
     print(channel)
