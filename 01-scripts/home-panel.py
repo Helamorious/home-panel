@@ -30,6 +30,7 @@ client.on_message = on_mqtt_message
 client.connect(mqtt_server, 1883, 60)
 
 pir.when_motion = pir_change
+pir.when_no_motion = pir_change
 
 while True:
     if time() - last_update >= 10:
