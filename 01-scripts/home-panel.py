@@ -14,7 +14,7 @@ last_reset = last_update
 mqtt_server = "mqtt.hilton.local"
 
 def pir_motion_detected(channel):
-    client.publish(sensor, pir.motion_detected)
+    client.publish(ha_sensor, pir.motion_detected)
     print(pir.motion_detected)
     print("Motion detected")
     print(channel)
