@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from time import time
 from time import sleep
 import socket
