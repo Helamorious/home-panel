@@ -1,30 +1,23 @@
-from time import time
-from time import sleep
-
+import time
+import socket
+import paho.mqtt.client as mqtt
 from gpiozero import MotionSensor
 
-import paho.mqtt.client as mqtt
+hostname = socket.gethostname()
 
 pir = MotionSensor(14)
-ha_sensor = "homeassistant/sensor/pir"
-
 last_update = time()
 last_reset = last_update
 
 mqtt_server = "mqtt.hilton.local"
 
-def pir_motion_detected(channel):
-    client.publish(ha_sensor, pir.motion_detected)
-    print(pir.motion_detected)
-    print("Motion detected")
-    print(channel)
+def pir_change(sensor)
+    client.publish(hostname+"/"+sensor+"/motion_detected", pir.motion_detected)
     global last_reset
+    last_reset = time()
 
 def on_mqtt_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
-
-    # Subscribing in on_connect() means that if we lose the connection and
-    # reconnect then subscriptions will be renewed.
     client.subscribe("$SYS/#")
 
 def on_mqtt_message(client, userdata, msg):
@@ -35,7 +28,7 @@ client.on_connect = on_mqtt_connect
 client.on_message = on_mqtt_message
 client.connect(mqtt_server, 1883, 60)
 
-pir.when_motion = pir_motion_detected
+pir.when_motion = pir_change
 
 while True:
     if time() - last_update >= 10:
