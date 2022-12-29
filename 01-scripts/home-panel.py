@@ -6,3 +6,5 @@ def motion_detected():
     print("Motion detected")
 
 pir.when_motion = motion_detected
+
+while True:
