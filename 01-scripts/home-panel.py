@@ -4,6 +4,7 @@ import socket
 import paho.mqtt.client as mqtt
 import subprocess
 from gpiozero import MotionSensor
+from Xlib import display
 
 hostname = socket.gethostname()
 
@@ -12,6 +13,8 @@ last_update = time()
 last_reset = last_update
 
 mqtt_server = "mqtt.hilton.local"
+
+disp = display.Display()
 
 def wake_screen():
     subprocess.run(["xset", "-d", ":0", "s", "reset"])
